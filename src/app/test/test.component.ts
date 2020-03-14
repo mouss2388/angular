@@ -5,10 +5,8 @@ import { Component, OnInit } from '@angular/core';
   template: ` <h2>
                 Welcome {{name}}
               </h2>
-              <button (click)="onClick($event)"> Greet </button>
-              <button (click)="greeting='Welcome Vishwas'"> Greet </button>
-
-              {{greeting}}
+              <input #myInput type="text">
+              <button (click)="logMessage(myInput.value)" >Log </button>
               `
   ,
   styles: [`
@@ -18,18 +16,14 @@ export class TestComponent implements OnInit {
 
   public name = 'Codevolution';
 
-
-  public greeting = '';
   constructor() { }
 
-
+logMessage(value) {
+  console.log(value);
+}
 
   ngOnInit() {
   }
 
-  onClick(event) {
-    console.log(event);
-    this.greeting = event.type;
-  }
 
 }
