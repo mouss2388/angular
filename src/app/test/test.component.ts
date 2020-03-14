@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
+  /**
+   * You can also set local variables for the following
+   * exported values: index, first, last, even and odd
+   */
   selector: 'app-test',
   template: `
-              <div [ngSwitch]="color">
-                <div *ngSwitchCase="'red'"> You picked red color</div>
-                <div *ngSwitchCase="'blue'"> You picked blue color</div>
-                <div *ngSwitchCase="'green'"> You picked green color</div>
-                <div *ngSwitchDefault >Pick again</div>
-              </div>
+
+          <div *ngFor="let color of colors; index as i">
+            <h2>{{i}} {{color}}</h2>
+          </div>
               `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
-  public color = 'grey';
+  public colors = ['red', 'blue', 'green', 'yellow'];
   constructor() { }
 
   ngOnInit() {
