@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
     <h3>you selected departmentt with id {{departmentId}}</h3>
     <a (click)="goPrevious()">Previous</a>
     <a (click)="goNext()">Next</a>
+
+    <div (click)="gotoDepartments()">Back</div>
   `,
   styles: []
 })
@@ -16,7 +18,6 @@ export class DepartmentDetailComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-   let id;
    /**
     * Use this example for get param id from url
     * id = Number(this.route.snapshot.paramMap.get('id'));
@@ -26,8 +27,9 @@ export class DepartmentDetailComponent implements OnInit {
    * Or use example below
    */
    this.route.params.subscribe(params => {
-                    id = Number(params.id);
-                    this.departmentId = id; } );
+                   const id = Number(params.id);
+                   this.departmentId = id;
+                  });
 
   }
 
@@ -41,4 +43,9 @@ export class DepartmentDetailComponent implements OnInit {
     this.router.navigate(['/departments', previousId]);
   }
 
+  gotoDepartments() {
+    const selectedId = this.departmentId ? this.departmentId : null;
+    this.router.navigate(['/departments', {id: selectedId}]);
+
+  }
 }

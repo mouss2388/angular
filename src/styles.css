@@ -12,3 +12,8 @@ nav a.active {
 a {
     margin-right: 10px;
 }
+
+.items li.selected {
+    background-color: #CFD8DC;
+    color: white;
+}
