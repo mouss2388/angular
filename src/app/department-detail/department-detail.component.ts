@@ -4,10 +4,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-department-detail',
   template: `
     <h3>you selected departmentt with id {{departmentId}}</h3>
-    <a (click)="goPrevious()">Previous</a>
-    <a (click)="goNext()">Next</a>
+
+    <p>
+      <button (click)="showOverview()">Overview</button>
+      <button (click)="showContact()">Contact</button>
+    </p>
+
+
+    <p>
+      <button (click)="goPrevious()">Previous</button>
+      <button (click)="goNext()">Next</button>
+    </p>
 
     <div (click)="gotoDepartments()">Back</div>
+
+    <router-outlet></router-outlet>
+
   `,
   styles: []
 })
@@ -48,5 +60,13 @@ export class DepartmentDetailComponent implements OnInit {
     // this.router.navigate(['/departments', {id: selectedId}]);
     this.router.navigate(['../', {id: selectedId}], {relativeTo: this.route});
 
+  }
+
+  showOverview() {
+    this.router.navigate(['overview'], {relativeTo: this.route});
+  }
+
+  showContact() {
+    this.router.navigate(['contact'], {relativeTo: this.route});
   }
 }
