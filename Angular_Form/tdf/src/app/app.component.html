@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <h1>BootCamp Enrollment Form</h1>
   <form #userForm="ngForm">
+    userForm: {{userForm.form.valid}}
     {{userForm.value | json}}
 
     <hr/>
@@ -69,6 +70,6 @@
       <label class="form-check-label">Send me promotional offers</label>
     </div>
 
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button [disabled] = "userForm.form.invalid || topicHasError" class="btn btn-primary" type="submit">Submit form</button>
   </form>
 </div>
